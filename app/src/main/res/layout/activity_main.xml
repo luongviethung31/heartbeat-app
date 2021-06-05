@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/background">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="59dp"
+                android:background="#c5e8f6"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.013"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.473"
+                        app:srcCompat="@drawable/age" />
+
+                    <Spinner
+                        android:id="@+id/sp_age"
+                        android:layout_width="105dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="12dp"
+                        android:gravity="right"
+                        app:layout_constraintStart_toStartOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Spinner
+                        android:id="@+id/sp_sex"
+                        android:layout_width="114dp"
+                        android:layout_height="38dp"
+                        android:layout_marginStart="148dp"
+                        android:layout_marginTop="8dp"
+                        android:gravity="right"
+                        app:layout_constraintStart_toStartOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Spinner
+                        android:id="@+id/sp_state"
+                        android:layout_width="116dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="268dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="60dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="100dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/sexicon" />
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="228dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/activity" />
+
+                    <Button
+                        android:id="@+id/btnClick"
+                        android:layout_width="25dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="364dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/save"
+                        app:layout_constraintStart_toStartOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ConstraintLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="204dp"
+                android:orientation="horizontal">
+
+                <com.ekn.gruzer.gaugelibrary.ArcGauge
+                    android:id="@+id/spo2"
+                    android:layout_width="200dp"
+                    android:layout_height="182dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.975"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.457" />
+
+                <TextView
+                    android:id="@+id/tvSpo2"
+                    android:layout_width="86dp"
+                    android:layout_height="41dp"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="#009688"
+                    android:textSize="30dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.773"
+                    app:layout_constraintStart_toStartOf="@+id/bmp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.496" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="38dp"
+                    android:layout_height="32dp"
+                    android:text="%"
+                    android:textColor="#706364"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/tvSpo2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.563" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="137dp"
+                    android:layout_height="37dp"
+                    android:text="Nồng độ O2"
+                    android:textColor="#009688"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.941"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.904" />
+
+                <com.ekn.gruzer.gaugelibrary.ArcGauge
+                    android:id="@+id/bmp"
+                    android:layout_width="201dp"
+                    android:layout_height="178dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.333" />
+
+                <TextView
+                    android:id="@+id/tvBpm"
+                    android:layout_width="101dp"
+                    android:layout_height="44dp"
+                    android:background="@color/design_default_color_surface"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textColor="#F6070F"
+                    android:textSize="30dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView2"
+                    app:layout_constraintEnd_toEndOf="@+id/bmp"
+                    app:layout_constraintHorizontal_bias="0.3"
+                    app:layout_constraintStart_toStartOf="@+id/bmp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.489" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="38dp"
+                    android:layout_height="32dp"
+                    android:text="bpm"
+                    android:textColor="#706364"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.302"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/heart"
+                    app:layout_constraintVertical_bias="0.093" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="91dp"
+                    android:layout_height="35dp"
+                    android:text="Nhịp Tim"
+                    android:textColor="#F6070F"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.187"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.905" />
+
+                <ImageView
+                    android:id="@+id/heart"
+                    android:layout_width="29dp"
+                    android:layout_height="40dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/tvBpm"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.347"
+                    app:srcCompat="@drawable/heart" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/graphview"
+                android:layout_width="match_parent"
+                android:background="@drawable/bg"
+                android:layout_marginRight="2dp"
+                android:layout_height="287dp" />
+
+            <TextView
+                android:id="@+id/tv_tittle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Biểu đồ nhịp tim và nồng độ Oxi trong máu"
+                android:textColor="#E40B0A0A"
+                android:textSize="14dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="119dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/tvTB2"
+                    android:layout_width="match_parent"
+                    android:layout_height="53dp"
+                    android:background="#c5e8f6"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvTB" />
+
+                <TextView
+                    android:id="@+id/tvTB"
+                    android:layout_width="match_parent"
+                    android:layout_height="53dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#c5e8f6"
+                    android:gravity="center"
+                    android:text="loading..."
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="47dp"
+                    android:layout_height="35dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvTB"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.043"
+                    app:layout_constraintStart_toStartOf="@+id/tvTB"
+                    app:layout_constraintTop_toTopOf="@+id/tvTB"
+                    app:layout_constraintVertical_bias="0.444"
+                    app:srcCompat="@drawable/hearticon" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="47dp"
+                    android:layout_height="35dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvTB2"
+                    app:layout_constraintEnd_toEndOf="@+id/tvTB2"
+                    app:layout_constraintHorizontal_bias="0.033"
+                    app:layout_constraintStart_toStartOf="@+id/tvTB2"
+                    app:layout_constraintTop_toTopOf="@+id/tvTB2"
+                    app:layout_constraintVertical_bias="0.666"
+                    app:srcCompat="@drawable/spo2icon" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@string/common_google_play_services_install_title"
+                android:gravity="center"
+                android:text="Design by 9th team"
+                android:textColor="#E4919191"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/activity_navigation_menu">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_height="60dp"
+                android:background="#c5e8f6">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    app:srcCompat="@drawable/notification"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="Lịch sử nhịp tim và SPO2"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:layout_height="60dp" />
+            </LinearLayout>
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/lv_navi"
+                android:background="@drawable/bg2"
+                android:layout_marginTop="80dp"/>
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+</LinearLayout>
