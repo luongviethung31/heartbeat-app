@@ -57,6 +57,8 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 import java.security.AccessController;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -68,7 +70,7 @@ import static android.graphics.Color.YELLOW;
 import static android.graphics.Color.red;
 
 public class MainActivity extends AppCompatActivity {
-    SimpleDateFormat sdf = new SimpleDateFormat("dd:MM:yyyy-HH:mm:ss");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy:MM:dd-HH:mm:ss");
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference reference = database.getReference("Current");
     DatabaseReference reference1 = database.getReference("History");
     String bpm, spo2, text1, text2, text3;
+    long timeFirebase,timeTem = 0;
     Button btnClick;
     boolean run = false;
     float bpmOut, spo2Out,notifOut=1;
@@ -115,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
     float[] hbam={105,95,82,80,72,73,73,74,74,72};
     float[] hbaw={105,95,82,77,76,75,76,76,76,75};
     float[] luu = new float[12];
-
+    long timeDelay = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -184,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
         Viewport viewport = graphView.getViewport();
         viewport.setYAxisBoundsManual(true);
         viewport.setMinY(0);
-        viewport.setMaxY(400);
+        viewport.setMaxY(250);
         viewport.setScrollable(true);
     }
 
@@ -216,33 +219,36 @@ public class MainActivity extends AppCompatActivity {
                     if(checkInfo()){
                         for (int j=0;j<12;j++) luu[j]=(sex==true) ? hbaw[i]:hbam[i];
                     }
-
                     bpm = arrayList1.get(0);
                     spo2 = arrayList1.get(1);
+                    timeFirebase = (long) Long.parseLong(arrayList1.get(2));
 
                     bpmOut = (float) Float.parseFloat(bpm);
                     bpmOut = (float)Math.round(bpmOut * 100) / 100;
                     spo2Out = (float)Float.parseFloat(spo2);
                     spo2Out = (float)Math.round(spo2Out*100)/100;
-                    graphView.removeAllSeries();//xóa biểu đồ cũ
-                    //vẽ
-                    for(int t=0;t<8;t++){
-                        mang[t]=mang[t+1];
-                        mang1[t]=mang1[t+1];
+                    if(timeFirebase!=timeTem){
+                        graphView.removeAllSeries();//xóa biểu đồ cũ
+                        //vẽ
+                        for(int t=0;t<8;t++){
+                            mang[t]=mang[t+1];
+                            mang1[t]=mang1[t+1];
+                        }
+                        mang[8]=bpmOut;
+                        Log.e("hung",String.valueOf(mang[8]));
+                        Log.e("hung","-------");
+                        mang1[8]=spo2Out;
+                        //thắng
+                        for (int j=0;j<11;j++) luu[j]=luu[j+1];
+                        luu[11]=bpmOut;
+                        Log.e("Bo",String.valueOf(warn2));
+                        checkState();
+                        Log.e("Bo2",String.valueOf(warn2));
+                        displayGraphView();
+                        displayArc();
+                        checkNotification();
+                        timeTem = timeFirebase;
                     }
-                    mang[8]=bpmOut;
-                    Log.e("hung",String.valueOf(mang[8]));
-                    Log.e("hung","-------");
-                    mang1[8]=spo2Out;
-                    //thắng
-                    for (int j=0;j<11;j++) luu[j]=luu[j+1];
-                    luu[11]=bpmOut;
-                    Log.e("Bo",String.valueOf(warn2));
-                    checkState();
-                    Log.e("Bo2",String.valueOf(warn2));
-                    displayGraphView();
-                    displayArc();
-                    checkNotification();
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
@@ -479,7 +485,7 @@ public class MainActivity extends AppCompatActivity {
                     if (luu[j] < hbmmin[i]) dem1++;
                 }
             }
-            if (dem1 + dem2 > 3 && dem1>1 &&dem2>1) warn2 = 3;
+            if (dem1 + dem2 > 3 && dem1>=1 &&dem2>=1) warn2 = 3;
             else if (dem1 > 3) warn2 = 1;
             else if (dem2 > 3) warn2 = 2;
             else warn2 = 0;
@@ -535,6 +541,7 @@ public class MainActivity extends AppCompatActivity {
                 for(int v = 0; v<arrayListValue.size();v++){
                     arrayList.add(new HistoryUser(arrayListValue.get(v),arrayListKey.get(v)));
                 }
+                Collections.sort(arrayList);
                 menuAdapter = new MenuAdapter(MainActivity.this,R.layout.activity_navigation_menu,arrayList);
                 listView.setAdapter(menuAdapter);
             }
